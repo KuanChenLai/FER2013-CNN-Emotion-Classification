@@ -1,8 +1,6 @@
 # FER-2013 Facial Emotion Classification with CNN
 
-使用 TensorFlow/Keras 建立卷積神經網路（CNN），
-針對 FER-2013 資料集進行七類臉部情緒分類。
-
+使用 TensorFlow/Keras 建立卷積神經網路（CNN），針對 FER-2013 資料集進行七類臉部情緒分類。
 本專案透過三階段實驗比較不同過擬合改善方法與模型泛化能力。
 
 ## Dataset
