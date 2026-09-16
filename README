@@ -1,0 +1,98 @@
+# FER-2013 Facial Emotion Classification with CNN
+
+使用 TensorFlow/Keras 建立卷積神經網路（CNN），
+針對 FER-2013 資料集進行七類臉部情緒分類。
+
+本專案透過三階段實驗比較不同過擬合改善方法與模型泛化能力。
+
+## Dataset
+資料來源：https://www.kaggle.com/datasets/msambare/fer2013
+FER-2013 包含 48x48 灰階人臉影像，共 7 種情緒：
+
+- Anger
+- Disgust
+- Fear
+- Happy
+- Sad
+- Surprise
+- Neutral
+
+依據 Dataset 中的 Usage 欄位分為：
+
+- Training
+- PublicTest
+- PrivateTest
+
+## Model Architecture
+
+CNN 架構：
+
+Conv2D(64)
+→ Conv2D(64)
+→ BatchNormalization
+→ MaxPooling
+
+→ Conv2D(128)
+→ Conv2D(128)
+→ BatchNormalization
+→ MaxPooling
+
+→ Conv2D(256)
+→ Conv2D(256)
+→ BatchNormalization
+→ MaxPooling
+
+→ Flatten
+→ Dense(128)
+→ Dropout
+→ Dense(7)
+→ Softmax
+
+## Experiments
+
+### Version 1 - Baseline CNN
+
+建立基礎 CNN 模型。
+
+- Dropout: 0.2
+- Adam Optimizer
+- Categorical Cross Entropy
+- 20 Epochs
+
+結果顯示模型出現明顯 Overfitting。
+
+### Version 2 - Overfitting Optimization
+
+加入：
+
+- Dropout 0.5
+- EarlyStopping
+- ReduceLROnPlateau
+
+降低模型過度訓練問題。
+
+### Version 3 - Data Augmentation
+
+加入 ImageDataGenerator：
+
+- Rotation
+- Width Shift
+- Height Shift
+- Zoom
+- Shear
+- Horizontal Flip
+
+增加訓練資料多樣性，改善模型泛化能力。
+
+## Evaluation
+
+使用：
+
+- Accuracy
+- Loss
+- Precision
+- Recall
+- F1-score
+- Confusion Matrix
+
+評估模型表現。
